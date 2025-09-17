@@ -8,8 +8,16 @@ class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Notes")),
-      body: Placeholder()
+      appBar: AppBar(title: Text("Notes",style: TextStyle(fontSize: 32),)),
+      body: ListView.separated(
+        itemBuilder: (context,index) {
+          return NoteWidget();
+        },
+        separatorBuilder: (context,index) {
+          return Divider();
+        },
+        itemCount: 10,
+      ),
     );
   }
 }
