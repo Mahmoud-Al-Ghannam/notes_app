@@ -1,9 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
 
 class NoteWidget extends StatelessWidget {
-  const NoteWidget({super.key});
+  final NoteModel note;
+
+
+  const NoteWidget({super.key, required this.note});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,7 @@ class NoteWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "This is a title",
+                  note.title,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -38,7 +42,7 @@ class NoteWidget extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              "Content \n lsjdfs slkdjf s sljdfkl s\n\n\n sjdfs lsjf \n\n\n\n\n\n\n\n\n\n\n\n\n\nksjf isf shf l",
+              note.content,
               style: TextStyle(fontSize: 16, color: Colors.black),
               maxLines: 2,
             ),
@@ -46,7 +50,7 @@ class NoteWidget extends StatelessWidget {
             Align(
               alignment: AlignmentGeometry.bottomRight,
               child: Text(
-                DateTime.now().toString(),
+                note.createdAt.toString(),
                 style: TextStyle(fontSize: 16, color: Colors.black),
               ),
             ),
