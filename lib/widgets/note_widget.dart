@@ -5,9 +5,9 @@ import 'package:notes_app/models/note_model.dart';
 
 class NoteWidget extends StatelessWidget {
   final NoteModel note;
+  final void Function()? onDeleted;
 
-
-  const NoteWidget({super.key, required this.note});
+  const NoteWidget({super.key, required this.note, this.onDeleted});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class NoteWidget extends StatelessWidget {
                 ),
                 IconButton(
                   icon: Icon(Icons.delete, color: Colors.black, size: 32),
-                  onPressed: () {},
+                  onPressed: onDeleted,
                 ),
               ],
             ),
