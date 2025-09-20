@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:notes_app/constants.dart';
 import 'package:notes_app/models/note_model.dart';
 
 class NoteWidget extends StatelessWidget {
   final NoteModel note;
+  final Color color;
   final void Function()? onDeleteIconTap, onTap;
 
   const NoteWidget({
@@ -12,6 +14,7 @@ class NoteWidget extends StatelessWidget {
     required this.note,
     this.onDeleteIconTap,
     this.onTap,
+    required this.color,
   });
 
   @override
@@ -19,12 +22,7 @@ class NoteWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
-        color: Color.fromARGB(
-          255,
-          155 + Random().nextInt(100),
-          155 + Random().nextInt(100),
-          155 + Random().nextInt(100),
-        ),
+        color: color,
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(

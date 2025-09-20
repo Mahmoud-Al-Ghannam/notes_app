@@ -41,8 +41,8 @@ class NotesView extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     child: NoteWidget(
+                      color: randomColors[index % randomColors.length],
                       onTap: () {
-                        print("hello world");
                         Navigator.of(context).pushNamed(EditNoteView.id);
                       },
                       note: NoteModel(
