@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+String kNotesBox = 'notes_box';
 Color kPrimaryColor = Color(0xFF51D3B4);
 List<Color> randomColors = [
   Color(0xFFE0AF66),

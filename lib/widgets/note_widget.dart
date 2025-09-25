@@ -6,7 +6,6 @@ import 'package:notes_app/models/note_model.dart';
 
 class NoteWidget extends StatelessWidget {
   final NoteModel note;
-  final Color color;
   final void Function()? onDeleteIconTap, onTap;
 
   const NoteWidget({
@@ -14,7 +13,6 @@ class NoteWidget extends StatelessWidget {
     required this.note,
     this.onDeleteIconTap,
     this.onTap,
-    required this.color,
   });
 
   @override
@@ -22,7 +20,7 @@ class NoteWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
-        color: color,
+        color: note.color,
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(

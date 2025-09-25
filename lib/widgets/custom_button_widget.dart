@@ -4,9 +4,15 @@ import '../constants.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   final String text;
+  final bool isLoading;
   final void Function()? onTap;
 
-  const CustomButtonWidget({super.key, required this.text, this.onTap});
+  const CustomButtonWidget({
+    super.key,
+    required this.text,
+    this.onTap,
+    this.isLoading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,13 @@ class CustomButtonWidget extends StatelessWidget {
           color: kPrimaryColor,
         ),
         child: Center(
-          child: Text(text, style: TextStyle(color: Colors.black)),
+          child: isLoading
+              ? SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(color: Colors.black,),
+                )
+              : Text(text, style: TextStyle(color: Colors.black)),
         ),
       ),
     );

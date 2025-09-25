@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
-class CustomTextFieldWidget extends StatelessWidget {
+class CustomTextFormFieldWidget extends StatelessWidget {
   final Color? color;
   TextEditingController? controller;
   final bool obscure;
@@ -11,8 +11,10 @@ class CustomTextFieldWidget extends StatelessWidget {
   final int? maxLines, minLines;
   final bool enabled, readOnly;
   final void Function(String)? onSubmitted, onChanged, onUnfocus;
+  final void Function(String?)? onSaved;
+  final String? Function(String?)? validator;
 
-  CustomTextFieldWidget({
+  CustomTextFormFieldWidget({
     super.key,
     this.controller,
     this.obscure = false,
@@ -28,6 +30,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.onUnfocus,
     this.enabled = true,
     this.readOnly = false,
+    this.onSaved, this.validator,
   });
 
   @override
@@ -43,7 +46,8 @@ class CustomTextFieldWidget extends StatelessWidget {
 
     return Container(
       color: color,
-      child: TextField(
+      child: TextFormField(
+        validator: validator,
         readOnly: readOnly,
         enabled: enabled,
         minLines: minLines,
@@ -51,8 +55,8 @@ class CustomTextFieldWidget extends StatelessWidget {
         controller: controller,
         focusNode: focusNode,
         obscureText: obscure,
-        onSubmitted: onSubmitted,
         onChanged: onChanged,
+        onSaved: onSaved,
         decoration: InputDecoration(
           labelText: label,
           alignLabelWithHint: true,

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:hive/hive.dart';
 
 part 'note_model.g.dart';
@@ -5,23 +7,18 @@ part 'note_model.g.dart';
 @HiveType(typeId: 0)
 class NoteModel extends HiveObject {
   @HiveField(0)
-  final String title;
+  String title;
   @HiveField(1)
-  final String content;
+  String content;
   @HiveField(2)
-  final DateTime createdAt;
+  DateTime createdAt;
+  @HiveField(3)
+  Color color;
 
   NoteModel({
     required this.title,
     required this.content,
     required this.createdAt,
+    required this.color,
   });
-
-  NoteModel copyWith({String? title, String? content, DateTime? createdAt}) {
-    return NoteModel(
-      title: title ?? this.title,
-      content: content ?? this.content,
-      createdAt: createdAt ?? this.createdAt,
-    );
-  }
 }
