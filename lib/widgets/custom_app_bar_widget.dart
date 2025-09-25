@@ -3,13 +3,13 @@ import 'package:notes_app/widgets/custom_icon_widget.dart';
 
 class CustomAppBarWidget extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final IconData? icon;
   final void Function()? onIconTap;
 
   const CustomAppBarWidget({
     super.key,
     required this.title,
-    required this.icon,
+    this.icon,
     this.onIconTap,
   });
 
@@ -22,7 +22,7 @@ class CustomAppBarWidget extends StatelessWidget {
           title,
           style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
         ),
-        CustomIconWidget(icon: icon, onTap: onIconTap),
+        if(icon != null) CustomIconWidget(icon: icon!, onTap: onIconTap),
       ],
     );
   }

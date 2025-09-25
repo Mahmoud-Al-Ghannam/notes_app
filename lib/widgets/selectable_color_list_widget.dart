@@ -8,7 +8,7 @@ class SelectableColorListWidget extends StatefulWidget {
 
   const SelectableColorListWidget({
     super.key,
-    this.initialSelectedIndex = 0,
+    this.initialSelectedIndex = -1,
     required this.colors,
     this.onSelected,
   });

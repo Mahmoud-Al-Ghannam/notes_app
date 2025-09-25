@@ -50,7 +50,7 @@ class _NotesViewState extends State<NotesView> {
             child: Column(
               children: [
                 SizedBox(height: 50),
-                CustomAppBarWidget(title: "Notes", icon: Icons.search),
+                CustomAppBarWidget(title: "Notes"),
                 SizedBox(height: 25),
                 Expanded(
                   child: ListView.builder(
@@ -61,7 +61,9 @@ class _NotesViewState extends State<NotesView> {
                         padding: const EdgeInsets.symmetric(vertical: 4.0),
                         child: NoteWidget(
                           onTap: () {
-                            Navigator.of(context).pushNamed(EditNoteView.id);
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                              return EditNoteView(note: notes[index]);
+                            }));
                           },
                           onDeleteIconTap: () {
                             notes[index].delete();
